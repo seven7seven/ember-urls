@@ -1,0 +1,13 @@
+<h1>This is search</h1>
+
+{{ search-component }}
+
+<ul>
+  {{#each model as |p|}}
+    <li>
+    	{{#link-to 'details' p.id p.slug }}
+    		ID{{ p.id }}, <strong>{{ p.title }}</strong>
+    	{{/link-to}}
+    </li>
+  {{/each}}
+</ul>

@@ -1,6 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('route:search-city', 'Unit | Route | search city', {
+moduleFor('route:search/advanced/city', 'Unit | Route | search/advanced/city', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
 });

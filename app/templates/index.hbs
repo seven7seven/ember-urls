@@ -1,7 +1,31 @@
 <h1>
-	Dummy app
+	Ember Pretty URLs & Categories
 </h1>
 
-{{#link-to 'search' }}Search{{/link-to}}
-{{#link-to 'search-city' 'cluj-napoca' }}Search in Cluj-Napoca{{/link-to}}
-{{#link-to 'search-type' 'apartamente' }}Search in Apartments{{/link-to}}
+<ul>
+	<li>
+		{{#link-to 'search' }}Search{{/link-to}}
+	</li>
+
+	<li>
+		{{#link-to 'search.advanced' 'vanzare' 'apartamente' }}Search apartamente de vanzare{{/link-to}}
+	</li>
+
+	<li>
+		{{#link-to 'search.advanced.city' 'vanzare' 'apartamente' 12323 'cluj-napoca' }}Search apartamente de vanzare in Cluj-Napoca{{/link-to}}
+	</li>
+
+	<li>
+		{{#link-to 'search.advanced.city.zone' 'vanzare' 'apartamente' 12323 'cluj-napoca' 2344 'marasti' }}Search apartamente de vanzare in Cluj-Napoca zona Marasti{{/link-to}}
+	</li>
+
+	<li>
+		{{#link-to 'search.advanced.city.zone.rooms' 'vanzare' 'apartamente' 12323 'cluj-napoca' 2344 'marasti' '2-camere' }}Search apartamente cu 2 camere de vanzare in Cluj-Napoca zona Marasti{{/link-to}}	
+	</li>
+
+	<hr>
+
+	<li>
+		{{#link-to 'search.advanced' '' ''  }}Search orice{{/link-to}}
+	</li>
+</ul>

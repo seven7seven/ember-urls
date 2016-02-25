@@ -35,12 +35,12 @@ var propertiesList =
     }];
 
 export default function() {
-  this.get('/properties', function() {
+  this.get('/api/properties', function() {
     return {
       data: propertiesList,
     };
   });
-  this.get('/properties/:id', function(db, request) {
+  this.get('/api/properties/:id', function(db, request) {
     return {
       // Hack for displaying a single detail page through the API
       data: propertiesList[request.params.id-1],

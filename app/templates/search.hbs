@@ -9,7 +9,7 @@
 <ul>
   {{#each model as |p|}}
     <li>
-    	{{#link-to 'details' p.id p.slug }}
+    	{{#link-to 'details' p.slug p.id }}
     		ID{{ p.id }}, <strong>{{ p.title }}</strong>
     	{{/link-to}}
     </li>
@@ -20,4 +20,4 @@
 
 Bonus tests:
 
-{{#link-to 'search.advanced.city' '!' '!' 2344 'cluj-napoca'  }}Search in Cluj-Napoca{{/link-to}}
+{{#link-to 'search' 'cluj-napoca'  }}Search in Cluj-Napoca{{/link-to}}

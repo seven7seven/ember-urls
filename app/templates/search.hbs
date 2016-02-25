@@ -1,6 +1,10 @@
 <h1>This is search</h1>
 
-{{ search-component }}
+{{ search-component 
+	transaction_type=transaction_type
+	property_type=property_type
+	city_slug=city_slug
+	zone_slug=zone_slug }}
 
 <ul>
   {{#each model as |p|}}
@@ -11,3 +15,9 @@
     </li>
   {{/each}}
 </ul>
+
+<hr>
+
+Bonus tests:
+
+{{#link-to 'search.advanced.city' '!' '!' 2344 'cluj-napoca'  }}Search in Cluj-Napoca{{/link-to}}

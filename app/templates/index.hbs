@@ -6,23 +6,27 @@
 <p>TODO: write a helper similar to (query-params) for generating these kind of links?</p>
 <ul>
 	<li>
-		{{#link-to 'search' '--' }}Search{{/link-to}}
+		{{#link-to 'search' '/' }}Search{{/link-to}}
 	</li>
 
 	<li>
-		{{#link-to 'search' 'vanzare--apartamente' }}Search apartamente de vanzare{{/link-to}}
+		{{#link-to 'search' 'vanzare/apartamente' }}Search apartamente de vanzare{{/link-to}}
 	</li>
 
 	<li>
-		{{#link-to 'search' 'vanzare--apartamente--cluj-napoca' }}Search apartamente de vanzare in Cluj-Napoca{{/link-to}}
+		{{#link-to 'search' 'vanzare/apartamente/cluj-napoca' }}Search apartamente de vanzare in Cluj-Napoca{{/link-to}}
 	</li>
 
 	<li>
-		{{#link-to 'search' 'vanzare--apartamente--cluj-napoca--marasti' }}Search apartamente de vanzare in Cluj-Napoca zona Marasti{{/link-to}}
+		{{#link-to 'search' 'vanzare/apartamente/cluj-napoca/marasti' }}Search apartamente de vanzare in Cluj-Napoca zona Marasti{{/link-to}}
 	</li>
 
 	<li>
-		{{#link-to 'search' 'vanzare--apartamente--cluj-napoca--marasti--2-camere' }}Search apartamente cu 2 camere de vanzare in Cluj-Napoca zona Marasti{{/link-to}}	
+		{{#link-to 'search' 'vanzare/apartamente/cluj-napoca/marasti,intre-lacuri,centru' }}Search apartamente de vanzare in Cluj-Napoca zona Marasti, Centru, Intre Lacuri{{/link-to}}
+	</li>
+
+	<li>
+		{{#link-to 'search' 'vanzare/apartamente/cluj-napoca/marasti/2-camere' }}Search apartamente cu 2 camere de vanzare in Cluj-Napoca zona Marasti{{/link-to}}	
 	</li>
 </ul>
 
@@ -32,6 +36,6 @@
 
 <ul>
 	<li>
-		{{#link-to 'search' '----cluj-napoca'  }}Search orice in Cluj-Napoca{{/link-to}}
+		{{#link-to 'search' '//cluj-napoca'  }}Search orice in Cluj-Napoca{{/link-to}}
 	</li>
 </ul>

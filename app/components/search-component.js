@@ -23,7 +23,7 @@ export default Ember.Component.extend({
       rooms = '';
     }
 
-    return `${transaction_type}--${property_type}--${city_slug}--${zone_slug}--${rooms}`;
+    return `${transaction_type}/${property_type}/${city_slug}/${zone_slug}/${rooms}`;
   },
   getTitle() {
     var transaction_type = this.get('transaction_type') || '',

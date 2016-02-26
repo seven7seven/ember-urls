@@ -4,7 +4,7 @@ export default Ember.Route.extend({
 
   // This function parses URL to build the data
   parseParams(params) {
-    var res = params.split('--'),
+    var res = params.split('/'),
         result = {},
         rooms;
     
@@ -21,7 +21,29 @@ export default Ember.Route.extend({
     return result;
   },
   model(params) {
+    
     var parsedParams = this.parseParams(params.params);
+    
+    // Process params for API request
+    if (parsedParams['city_slug']) {
+      // TODO: get city ID
+      parsedParams['city'] = 23;
+      delete parsedParams['city_slug'];
+    }
+
+    if (parsedParams['zone_slug']) {
+      var zones = parsedParams['zone_slug'].split(','),
+          zoneIDs = [];
+
+      for (var i = zones.length - 1; i >= 0; i--) {
+        // TODO: get zone id from slug, zones[i]
+        zoneIDs.push(i + 23234);
+      }
+
+      parsedParams['zone'] = $.param({ 'zone': zoneIDs });
+      delete parsedParams['zone_slug'];
+    }
+
     return this.store.query('property', parsedParams);
   },
   setupController: function(controller, model) {

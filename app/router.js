@@ -6,7 +6,7 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('search', { path: '/p/*params/'});
+  this.route('search', { path: '/p/*params'});
   this.route('details', { path: '/p/:slug/:property_id'});
 });
 

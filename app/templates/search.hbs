@@ -1,10 +1,13 @@
 <h1>This is search</h1>
 
+<h2>Search Filters</h2>
 {{ search-component 
+	search="updateResults"
 	transaction_type=transaction_type
 	property_type=property_type
 	city_slug=city_slug
-	zone_slug=zone_slug }}
+	zone_slug=zone_slug
+	rooms=rooms }}
 
 <ul>
   {{#each model as |p|}}
@@ -15,9 +18,3 @@
     </li>
   {{/each}}
 </ul>
-
-<hr>
-
-Bonus tests:
-
-{{#link-to 'search' 'cluj-napoca'  }}Search in Cluj-Napoca{{/link-to}}

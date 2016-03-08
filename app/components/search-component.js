@@ -6,6 +6,7 @@ export default Ember.Component.extend({
   city_slug: null,
   zone_slug: null,
   rooms: null,
+  selectable: null,
 
   title: null,
 
@@ -63,9 +64,12 @@ export default Ember.Component.extend({
     this.set('title', this.getTitle());
   },
   actions: {
-    update() {
+    update(e) {
       // Serialize all the filters & send an update up
       this.sendAction('search', this.getSerialization());
+
+      console.warn('E is', e);
+      console.warn('selectable is ', this.get('selectable'));
 
       // Set the component's title property
       this.set('title', this.getTitle());

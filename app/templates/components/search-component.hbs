@@ -4,5 +4,14 @@
 {{ simple-filter filter=city_slug changed="update" name="city"}}
 {{ simple-filter filter=zone_slug changed="update" name="zone"}}
 {{ simple-filter filter=rooms changed="update" name="rooms"}}
+<strong>
+  selectable
+</strong> <br>
+{{ simple-select
+  content=selectableValues
+  optionLabelPath="name"
+  selection=selectable
+  prompt="Please select a value"
+  action=(compose (action (mut selectable)) (action 'update')) }}
 
 <h1>{{ title }}</h1>

@@ -1,22 +1,28 @@
 <h1>This is search</h1>
 
 <h2>Search Filters</h2>
-{{ search-component 
-	search="updateResults"
-	transaction_type=transaction_type
-	property_type=property_type
-	city_slug=city_slug
-	zone_slug=zone_slug
-	rooms=rooms
-  selectable=selectable
-  selectableValues=selectableValues }}
+{{#with (parse-search-params model) as |params|}}
+  {{#search-component 
+    search="updateResults"
+    params=params
+    fetch=(action 'search')
+    as |data actions|  
+  }}
+    {{ simple-filter filter=params.transaction_type changed=actions.update name="transaction_type" }}
+    {{ simple-filter filter=params.property_type changed=actions.update name="property_type" }}
+    {{ simple-filter filter=params.city_slug changed=actions.update name="city"}}
+    {{ simple-filter filter=params.zone_slug changed=actions.update name="zone"}}
+    {{ simple-filter filter=params.rooms changed=actions.update name="rooms"}}
+    
+  <ul>
+    {{#each data as |p|}}
+      <li>
+        {{#link-to 'details' p.slug p.id }}
+          ID{{ p.id }}, <strong>{{ p.title }}</strong>
+        {{/link-to}}
+      </li>
+    {{/each}}
+  </ul>
+  {{/search-component}}
+{{/with}}
 
-<ul>
-  {{#each model as |p|}}
-    <li>
-    	{{#link-to 'details' p.slug p.id }}
-    		ID{{ p.id }}, <strong>{{ p.title }}</strong>
-    	{{/link-to}}
-    </li>
-  {{/each}}
-</ul>

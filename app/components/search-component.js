@@ -1,5 +1,13 @@
 import Ember from 'ember';
 
+// Responsibilities
+//  -- providing your template with an API for manipulating the query
+//  -- know how to generate params query
+//  -- send closure action with query
+//  -- receive data 
+//  -- handle is-loading
+//  -- yield data
+
 export default Ember.Component.extend({
   transaction_type: null,
   property_type: null,
@@ -59,6 +67,23 @@ export default Ember.Component.extend({
 
     return `${property_type}${rooms}${transaction_type}${city}${zone}`;
   },
+  didReceiveAttrs() {
+    this._super(...arguments);
+    let params = this.get('params');
+    let _params = this.get('_params');
+    
+    if (params !== _params) {
+      this.set('isLoading', true);
+      let query = this.buildQuery(params);
+      this['fetch'](query)
+        .then((data)=>{
+           this.set('data', data);
+           this.set('isLoading', false);
+           this.set('_params', params);
+        });
+    }
+    
+  },
   didInsertElement() {
     // Set the component's title property
     this.set('title', this.getTitle());
@@ -76,3 +101,24 @@ export default Ember.Component.extend({
     }
   }
 });
+
+    
+    // // Process params for API request
+    // if (parsedParams['city_slug']) {
+    //   // TODO: get city ID
+    //   parsedParams['city'] = 23;
+    //   delete parsedParams['city_slug'];
+    // }
+
+    // if (parsedParams['zone_slug']) {
+    //   var zones = parsedParams['zone_slug'].split(','),
+    //       zoneIDs = [];
+
+    //   for (var i = zones.length - 1; i >= 0; i--) {
+    //     // TODO: get zone id from slug, zones[i]
+    //     zoneIDs.push(i + 23234);
+    //   }
+
+    //   parsedParams['zone'] = $.param({ 'zone': zoneIDs });
+    //   delete parsedParams['zone_slug'];
+    // }

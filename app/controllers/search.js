@@ -16,6 +16,9 @@ export default Ember.Controller.extend({
     updateResults(serialization) {
       // Update the URL, this also triggers a model hook
       this.transitionToRoute('search', serialization);
+    },
+    search(params) {
+      return this.store.query('property', params);
     }
   }
 });
